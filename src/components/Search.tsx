@@ -21,10 +21,11 @@ const Search = () => {
 
     }, [data])
 
+    let key: string = import.meta.env.VITE_SEARCH_API_KEY
 
     const fetch = async () => {
         try {
-            const res = await axios(`https://us1.locationiq.com/v1/autocomplete.php?key=REMOVED&q=${data}&format=json`)
+            const res = await axios(`https://us1.locationiq.com/v1/autocomplete.php?key=${key}&q=${data}&format=json`)
             setResult(res.data)
 
         } catch (error) {
@@ -34,9 +35,9 @@ const Search = () => {
     }
 
     const handleQuery = (e: string) => {
-            setQuery(e)
-            setData('')            
-            setResult(null)
+        setQuery(e)
+        setData('')
+        setResult(null)
     }
 
     const handleIcon = () => {

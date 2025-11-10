@@ -32,11 +32,12 @@ const Item = () => {
     fetch()
   }, [query])
 
+  let key: string = import.meta.env.VITE_WEATHER_API_KEY
 
   const fetch = async (): Promise<void> => {
     setLoader(true)
     try {
-      const res = await axios(`https://api.weatherapi.com/v1/forecast.json?key=REMOVED&q=${query}&days=7`)
+      const res = await axios(`https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${query}&days=7`)
       const data = await res.data
       setWeather(data.current)
       setLocation(data.location)
